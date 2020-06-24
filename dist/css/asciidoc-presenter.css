@@ -4,8 +4,8 @@ section.sect1 {
   width: 100%;
   position: absolute;
   z-index: 0;
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: black;
   overflow: scroll;
   padding: 1rem;
 }
@@ -16,7 +16,7 @@ section.sect1:target {
 
 body {
   margin: 0;
-  background-color: white;
+  background-color: black;
   box-sizing: border-box;
 }
 
@@ -177,7 +177,7 @@ footer {
 section.sectionbody {
   padding: 2rem;
   margin: 0;
-  xbackground-color: rgba(255, 255, 255, 0.4);
+  xbackground-color: rgba(0, 0, 0, 0.4);
 }
 
 section.sectionbody:blank {

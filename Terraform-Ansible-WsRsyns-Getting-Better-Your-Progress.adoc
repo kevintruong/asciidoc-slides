@@ -1,0 +1,160 @@
+= Ansible - Terraform - Workspace Rsync: Together for better development experience
+:author: Vu Truong
+:revnumber: 0.1.0
+:revdate: 2020-06-01
+:toc:
+:docinfodir: dist/docinfo
+:stylesdir: dist/css
+:imagesdir: images
+:docinfo: shared
+:source-highlighter: rouge
+:stylesheet!:
+:linkcss:
+:nofooter:
+
+== Ansible - Terraform - Workspace Rsync: pass:q[<br>]Together for better development experience
+
+[.background]
+image::blackwp.png[]
+
+== Problems
+
+[.background]
+image::blackwp.png[]
+// TODO what is problems with firmware team development process now
+// comments
+* Dependence on Servers
+* Server is a limited resource and must be shared between the whole firmware team.
+* Our server is quite outdated and gives bad performance.
+// People while working on the server will restrict permission. Then
+// they can not freely to customize their development environment.
+* Cannot freely customize development environment in the server.
+* Not good on developing experience.
+That affects the performance of FW team.
+
+== What we need now ?
+
+[.background]
+image::blackwp.png[]
+
+* Upgrading the servers or just buying new one.
+* Decentralize the server workload (Using Docker as a builder or use Cloud Server)
+* Smarter process (method) while developing in the remote environment.
+
+== Build your own Server and pass:q[<br>]be free from any restrictions
+
+[.background]
+image::blackwp.png[]
+// TODO
+
+image::freedom_cloud.png[align="center"]
+
+== Challenges
+
+[.background]
+image::blackwp.png[]
+// must learn about how to configure a server in Cloud
+* Boring configure workload.
+Must learn about cloud service provider.
+* Pay fees for cloud service provider (Expensive)
+* Still struggle with development experience.
+
+== Terraform + Ansible + Workspace Rsync:pass:q[<br>]A formation to solve all challenges above.
+
+[.background]
+image::blackwp.png[]
+
+* Terraform: Focusing on talk with cloud service providers.
+In the case is GCP.
+* Ansible: Focusing on talk with each OS which deploy in cloud instance.
+* Workspace-Rsync: Focusing on making our development experience easier.
+
+[plantuml,work_progress,svg,align=center]
+----
+skinparam componentStyle uml2
+'!pragma horizontalLineBetweenDifferentPackageAllowed
+
+package "User" as user {
+  [ws_rsync]
+  [terraform]
+  [ansible]
+}
+
+package Cloud-Provider as cloud {
+    package "Cloud-Instance" as cloudinstance {
+        [Project]
+    }
+}
+
+
+
+ws_rsync <-right-> Project : sync and \nremote call
+terraform -down-> cloud : Create Instance \nwith config
+ansible -right-> cloudinstance: Configure instance \nas declared
+
+
+
+
+
+----
+
+== Why I choose GCP instead of AWS/Azure ?
+
+[.background]
+image::blackwp.png[]
+
+* Free tier with 300$ with simple register process
+* Easy to get credentials file
+* Simple price model in preemptible instance.
+
+== Terraform, make a simple Hello world ?
+
+[.background]
+image::blackwp.png[]
+
+== Getting start
+
+[.background]
+image::blackwp.png[]
+
+* terraform init
+* terraform plan
+* terraform apply
+
+`Terraform Up and Run`
+
+== Ansiblepass:q[<br>] Demo quick configure a new server/instance
+
+[.background]
+image::blackwp.png[]
+
+== Ansible - getting start
+
+[.background]
+image::blackwp.png[]
+
+* A slide is simply a level 2 section in Asciidoc.
+
+== Workspace rsync: pass:q[<br>]Make remote development more smooth
+
+[.background]
+image::blackwp.png[]
+// Picture here
+
+== Demo
+
+[.background]
+image::blackwp.png[]
+
+== Workspace rsync features:
+
+[.background]
+image::blackwp.png[]
+
+* ws-rsync init
+* ws-rsync push
+* ws-rsync pull
+* ws-rsync download
+* ws-rsync upload
+* ws-rsync call <command>
+* ws-rsync start
